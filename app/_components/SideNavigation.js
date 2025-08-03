@@ -34,7 +34,7 @@ function SideNavigation() {
             <Link
               className={`${
                 pathname === link.href ? 'bg-primary-900' : ''
-              } p-2 md:py-3 md:px-5 text-sm hover:bg-primary-900 hover:text-primary-100 transition-colors flex items-center gap-2 md:gap-4 font-semibold text-primary-200`}
+              } p-2 md:py-3 md:px-5 text-sm md:text-base hover:bg-primary-900 hover:text-primary-100 transition-colors flex items-center gap-2 md:gap-4 font-semibold text-primary-200`}
               href={link.href}
             >
               {link.icon}
