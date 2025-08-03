@@ -1,51 +1,51 @@
-import { UsersIcon } from "@heroicons/react/24/solid";
-import Image from "next/image";
-import Link from "next/link";
+import { UsersIcon } from '@heroicons/react/24/solid';
+import Image from 'next/image';
+import Link from 'next/link';
 
 function CabinCard({ cabin }) {
-    const { id, name, maxCapacity, regularPrice, discount, image } = cabin;
+  const { id, name, maxCapacity, regularPrice, discount, image } = cabin;
 
-    return (
-        <div className="flex border-primary-800 border ">
-            <div className="flex-1 relative">
-                <Image src={image} alt={`Cabin ${name}`} fill className="object-cover border-r border-primary-800" />
-            </div>
+  return (
+    <div className='flex flex-col md:flex-row border-primary-800 border '>
+      <div className='flex-1 aspect-square md:h-auto relative'>
+        <Image src={image} alt={`Cabin ${name}`} fill className='object-cover border-r border-primary-800' />
+      </div>
 
-            <div className="flex-grow">
-                <div className="pt-5 pb-4 px-7 bg-primary-950">
-                    <h3 className="text-accent-500 font-semibold text-2xl mb-3">Cabin {name}</h3>
+      <div className='flex-grow flex flex-col'>
+        <div className='pt-3 pb-2 px-3 md:pt-5 md:pb-4 md:px-7 bg-primary-950'>
+          <h3 className='text-accent-500 font-semibold text-lg md:text-2xl mb-3'>Cabin {name}</h3>
 
-                    <div className="flex gap-3 items-center mb-2">
-                        <UsersIcon className="h-5 w-5 text-primary-600" />
-                        <p className="text-lg text-primary-200">
-                            For up to <span className="font-bold">{maxCapacity}</span> guests
-                        </p>
-                    </div>
+          <div className='flex gap-1 items-center mb-2'>
+            <UsersIcon className='h-5 w-5 text-primary-600' />
+            <p className='text-sm md:text-lg text-primary-200'>
+              For up to <span className='font-bold'>{maxCapacity}</span> guests
+            </p>
+          </div>
 
-                    <p className="flex gap-3 justify-end items-baseline">
-                        {discount > 0 ? (
-                            <>
-                                <span className="text-3xl font-[350]">${regularPrice - discount}</span>
-                                <span className="line-through font-semibold text-primary-600">${regularPrice}</span>
-                            </>
-                        ) : (
-                            <span className="text-3xl font-[350]">${regularPrice}</span>
-                        )}
-                        <span className="text-primary-200">/ night</span>
-                    </p>
-                </div>
-
-                <div className="bg-primary-950 border-t border-t-primary-800 text-right">
-                    <Link
-                        href={`/cabins/${id}`}
-                        className="border-l border-primary-800 py-4 px-6 inline-block hover:bg-accent-600 transition-all hover:text-primary-900"
-                    >
-                        Details & reservation &rarr;
-                    </Link>
-                </div>
-            </div>
+          <p className='flex gap-1 justify-end items-baseline whitespace-nowrap'>
+            {discount > 0 ? (
+              <>
+                <span className='text-lg md:text-3xl font-[350]'>${regularPrice - discount}</span>
+                <span className='line-through font-semibold text-primary-600'>${regularPrice}</span>
+              </>
+            ) : (
+              <span className='text-lg md:text-3xl font-[350]'>${regularPrice}</span>
+            )}
+            <span className='text-primary-200'>/ night</span>
+          </p>
         </div>
-    );
+
+        <div className='bg-primary-950 border-t border-t-primary-800 text-right mt-auto'>
+          <Link
+            href={`/cabins/${id}`}
+            className='border-l border-primary-800 text-sm p-2 md:py-4 md:px-6 inline-block hover:bg-accent-600 transition-all hover:text-primary-900'
+          >
+            Details & reservation &rarr;
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default CabinCard;
